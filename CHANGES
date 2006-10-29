@@ -1,0 +1,10 @@
+# Legend:
+# --- = A new release
+#   + = Added a feature (in a backwards compatible way)
+#   ! = Changed something significant, or removed a feature
+#   * = Fixed a bug, or made a minor improvement
+
+--- 0.001 (initial release) (2006-10-23 00:00)
+
+# $Id: CHANGES 2 2006-10-22 23:20:28Z julian $
+# vim:sts=2 sw=2 et tw=79

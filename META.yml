@@ -1,0 +1,17 @@
+---
+name: Net-DNS-Resolver-Programmable
+version: 0.001
+author:
+  - 'Julian Mehnle <julian@mehnle.net>'
+abstract: |-
+  programmable DNS resolver class for offline
+  emulation of DNS
+license: perl
+requires:
+  Net::DNS: 0
+  perl: 0
+provides:
+  Net::DNS::Resolver::Programmable:
+    file: lib/Net/DNS/Resolver/Programmable.pm
+    version: 0.001
+generated_by: Module::Build version 0.26
