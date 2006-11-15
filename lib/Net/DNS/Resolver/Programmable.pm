@@ -3,7 +3,7 @@
 # A Net::DNS::Resolver descendant class for offline emulation of DNS
 #
 # (C) 2006 Julian Mehnle <julian@mehnle.net>
-# $Id: Programmable.pm 7 2006-11-15 04:06:21Z julian $
+# $Id: Programmable.pm 9 2006-11-15 15:13:50Z julian $
 #
 ##############################################################################
 
@@ -16,11 +16,11 @@ emulation of DNS
 
 =head1 VERSION
 
-0.002
+0.002.1
 
 =cut
 
-our $VERSION = '0.002';
+use version; our $VERSION = qv('0.002.1');
 
 use warnings;
 use strict;
@@ -205,7 +205,7 @@ sub send {
         ($result, $aa, @answer_rrs) = $resolver_code->($domain, $rr_type, $class);
     }
     
-    if (defined($Net::DNS::rcodesbyname{$result})) {
+    if (not defined($result) or defined($Net::DNS::rcodesbyname{$result})) {
         # Valid RCODE, return a packet:
         
         $aa     = TRUE      if not defined($aa);

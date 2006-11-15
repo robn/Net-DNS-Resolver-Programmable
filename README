@@ -1,4 +1,4 @@
-Net::DNS::Resolver::Programmable 0.002
+Net::DNS::Resolver::Programmable 0.002.1
 A Net::DNS::Resolver descendant class for offline emulation of DNS
 (C) 2006 Julian Mehnle <julian@mehnle.net>
 <http://search.cpan.org/dist/Net-DNS-Resolver-Programmable>
@@ -9,5 +9,5 @@ allows a virtual DNS to be emulated instead of querying the real DNS.  A set of
 static DNS records may be supplied, or arbitrary code may be specified as a
 means for retrieving DNS records, or even generating them on the fly.
 
-# $Id: README 7 2006-11-15 04:06:21Z julian $
+# $Id: README 9 2006-11-15 15:13:50Z julian $
 # vim:tw=79

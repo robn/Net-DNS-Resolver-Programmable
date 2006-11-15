@@ -1,3 +1,10 @@
+libnet-dns-resolver-programmable-perl (0.002.1) unstable; urgency=low
+
+  ! Depends, Build-Depends-Indep: libversion-perl
+  * Correctly handle undefined result code returned by custom resolver code.
+
+ -- Julian Mehnle <julian@mehnle.net>  Wed, 15 Nov 2006 15:30:00 +0000
+
 libnet-dns-resolver-programmable-perl (0.002) unstable; urgency=low
 
   + Support non-RCODE strings to be returned by custom resolver code, which is

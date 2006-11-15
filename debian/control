@@ -3,12 +3,12 @@ Section: perl
 Priority: optional
 Maintainer: Julian Mehnle <julian@mehnle.net>
 Build-Depends: debhelper (>= 5)
-Build-Depends-Indep: perl (>= 5.6), libmodule-build-perl (>= 0.26), libtest-simple-perl
+Build-Depends-Indep: perl (>= 5.6), libmodule-build-perl (>= 0.26), libversion-perl, libtest-simple-perl
 Standards-Version: 3.7.2
 
 Package: libnet-dns-resolver-programmable-perl
 Architecture: all
-Depends: ${perl:Depends}, ${misc:Depends}
+Depends: ${perl:Depends}, libversion-perl, ${misc:Depends}
 Description: programmable DNS resolver class for offline emulation of DNS
  Net::DNS::Resolver::Programmable is a Net::DNS::Resolver descendant class that
  allows a virtual DNS to be emulated instead of querying the real DNS.  A set

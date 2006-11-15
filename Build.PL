@@ -7,6 +7,7 @@ my $build = Module::Build->new(
     requires        => {
         # Core requirements:
         perl                => 0,
+        version             => 0,
         Net::DNS            => 0
     },
     recommends      => {
