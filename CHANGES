@@ -4,7 +4,14 @@
 #   ! = Changed something significant, or removed a feature
 #   * = Fixed a bug, or made a minor improvement
 
+--- 0.002 (2006-11-15 03:45)
+
+  + Support non-RCODE strings to be returned by custom resolver code, which is
+    then taken as the resolver's error string.
+  * Do not fold identical returned RRs into a single RR.
+  * Minor documentation fixes.
+
 --- 0.001 (initial release) (2006-10-23 00:00)
 
-# $Id: CHANGES 2 2006-10-22 23:20:28Z julian $
+# $Id: CHANGES 7 2006-11-15 04:06:21Z julian $
 # vim:sts=2 sw=2 et tw=79

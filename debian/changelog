@@ -1,3 +1,12 @@
+libnet-dns-resolver-programmable-perl (0.002) unstable; urgency=low
+
+  + Support non-RCODE strings to be returned by custom resolver code, which is
+    then taken as the resolver's error string.
+  * Do not fold identical returned RRs into a single RR.
+  * Minor documentation fixes.
+
+ -- Julian Mehnle <julian@mehnle.net>  Wed, 15 Nov 2006 03:45:00 +0000
+
 libnet-dns-resolver-programmable-perl (0.001) unstable; urgency=low
 
   * Initial Release.

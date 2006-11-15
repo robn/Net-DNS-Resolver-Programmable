@@ -1,6 +1,6 @@
 ---
 name: Net-DNS-Resolver-Programmable
-version: 0.001
+version: 0.002
 author:
   - 'Julian Mehnle <julian@mehnle.net>'
 abstract: |-
@@ -13,5 +13,5 @@ requires:
 provides:
   Net::DNS::Resolver::Programmable:
     file: lib/Net/DNS/Resolver/Programmable.pm
-    version: 0.001
+    version: 0.002
 generated_by: Module::Build version 0.26

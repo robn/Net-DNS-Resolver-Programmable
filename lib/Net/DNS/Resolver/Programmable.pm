@@ -3,7 +3,7 @@
 # A Net::DNS::Resolver descendant class for offline emulation of DNS
 #
 # (C) 2006 Julian Mehnle <julian@mehnle.net>
-# $Id: Programmable.pm 5 2006-10-24 22:46:25Z julian $
+# $Id: Programmable.pm 7 2006-11-15 04:06:21Z julian $
 #
 ##############################################################################
 
@@ -16,11 +16,11 @@ emulation of DNS
 
 =head1 VERSION
 
-0.001
+0.002
 
 =cut
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use warnings;
 use strict;
@@ -54,7 +54,7 @@ use constant FALSE  => not TRUE;
         resolver_code   => sub {
             my ($domain, $rr_type, $class) = @_;
             ...
-            return ($rcode, $aa, @rrs);
+            return ($result, $aa, @rrs);
         }
     );
 
@@ -117,16 +117,18 @@ The code must take the following query parameters as arguments: the I<domain>,
 I<RR type>, and I<class>.
 
 It must return a list composed of: the response's I<RCODE> (by name, as
-returned by L<< Net::DNS::Header->rcode | Net::DNS::Header/rcode >>), the
+returned by L<< Net::DNS::Header->rcode|Net::DNS::Header/rcode >>), the
 I<< C<aa> (authoritative answer) flag >> (I<boolean>, use B<undef> if you don't
-care), and the I<Net::DNS::RR answer objects>.
+care), and the I<Net::DNS::RR answer objects>.  If an error string is returned
+instead of a valid RCODE, a I<Net::DNS::Packet> object is not constructed but
+an error condition for the resolver is signaled instead.
 
 For example:
 
     resolver_code => sub {
         my ($domain, $rr_type, $class) = @_;
         ...
-        return ($rcode, $aa, @rrs);
+        return ($result, $aa, @rrs);
     }
 
 If both this and the C<records> option are specified, then statically
@@ -195,33 +197,44 @@ sub send {
     my $rr_type  = $question->qtype;
     my $class    = $question->qclass;
     
-    my ($rcode, $aa, @answer_rrs);
+    $self->_reset_errorstring;
+    
+    my ($result, $aa, @answer_rrs);
     
     if (defined(my $resolver_code = $self->{resolver_code})) {
-        ($rcode, $aa, @answer_rrs) = $resolver_code->($domain, $rr_type, $class);
+        ($result, $aa, @answer_rrs) = $resolver_code->($domain, $rr_type, $class);
     }
     
-    $aa    = TRUE      if not defined($aa);
-    $rcode = 'NOERROR' if not defined($rcode);
-    
-    if (defined(my $records = $self->{records})) {
-        if (ref(my $rrs_for_domain = $records->{$domain}) eq 'ARRAY') {
-            foreach my $rr (@$rrs_for_domain) {
-                push(@answer_rrs, $rr)
-                    if  $rr->name  eq $domain
-                    and $rr->type  eq $rr_type
-                    and $rr->class eq $class;
+    if (defined($Net::DNS::rcodesbyname{$result})) {
+        # Valid RCODE, return a packet:
+        
+        $aa     = TRUE      if not defined($aa);
+        $result = 'NOERROR' if not defined($result);
+        
+        if (defined(my $records = $self->{records})) {
+            if (ref(my $rrs_for_domain = $records->{$domain}) eq 'ARRAY') {
+                foreach my $rr (@$rrs_for_domain) {
+                    push(@answer_rrs, $rr)
+                        if  $rr->name  eq $domain
+                        and $rr->type  eq $rr_type
+                        and $rr->class eq $class;
+                }
             }
         }
+        
+        my $packet = Net::DNS::Packet->new($domain, $rr_type, $class);
+        $packet->header->qr(TRUE);
+        $packet->header->rcode($result);
+        $packet->header->aa($aa);
+        $packet->push(answer => @answer_rrs);
+        
+        return $packet;
     }
-    
-    my $packet = Net::DNS::Packet->new($domain, $rr_type, $class);
-    $packet->header->qr(TRUE);
-    $packet->header->rcode($rcode);
-    $packet->header->aa($aa);
-    $packet->unique_push(answer => @answer_rrs);
-    
-    return $packet;
+    else {
+        # Invalid RCODE, signal error condition by not returning a packet:
+        $self->errorstring($result);
+        return undef;
+    }
 }
 
 =item B<print>
