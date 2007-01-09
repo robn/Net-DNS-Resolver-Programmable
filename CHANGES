@@ -4,6 +4,10 @@
 #   ! = Changed something significant, or removed a feature
 #   * = Fixed a bug, or made a minor improvement
 
+--- 0.002.2 (2007-01-09 13:00)
+
+  * Explicitly mention license in README file.
+
 --- 0.002.1 (2006-11-15 15:30)
 
   ! Requires version package.

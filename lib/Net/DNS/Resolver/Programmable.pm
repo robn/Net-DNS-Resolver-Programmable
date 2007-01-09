@@ -2,7 +2,7 @@
 # Net::DNS::Resolver::Programmable
 # A Net::DNS::Resolver descendant class for offline emulation of DNS
 #
-# (C) 2006 Julian Mehnle <julian@mehnle.net>
+# (C) 2006-2007 Julian Mehnle <julian@mehnle.net>
 # $Id: Programmable.pm 9 2006-11-15 15:13:50Z julian $
 #
 ##############################################################################
@@ -16,11 +16,11 @@ emulation of DNS
 
 =head1 VERSION
 
-0.002.1
+0.002.2
 
 =cut
 
-use version; our $VERSION = qv('0.002.1');
+use version; our $VERSION = qv('0.002.2');
 
 use warnings;
 use strict;
@@ -133,7 +133,7 @@ For example:
 
 If both this and the C<records> option are specified, then statically
 programmed records are used in addition to any that are returned by the
-configured resolver code.  (FIXME?)
+configured resolver code.
 
 =item B<defnames>
 

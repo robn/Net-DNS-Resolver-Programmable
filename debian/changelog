@@ -1,3 +1,9 @@
+libnet-dns-resolver-programmable-perl (0.002.2) unstable; urgency=low
+
+  * Slightly adjusted license statement in debian/copyright.
+
+ -- Julian Mehnle <julian@mehnle.net>  Tue,  9 Jan 2007 13:00:00 +0000
+
 libnet-dns-resolver-programmable-perl (0.002.1) unstable; urgency=low
 
   ! Depends, Build-Depends-Indep: libversion-perl
