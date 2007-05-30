@@ -6,14 +6,15 @@ my $build = Module::Build->new(
     license         => 'perl',
     requires        => {
         # Core requirements:
-        perl                => 0,
-        version             => 0,
-        Net::DNS            => 0
+        perl            => 0,
+        version         => 0,
+        Net::DNS        => 0
     },
     recommends      => {
     },
     build_requires  => {
         # Build-only requirements:
+        Module::Build   => '0.2805'
     },
     create_makefile_pl
                     => 'passthrough',
@@ -22,4 +23,4 @@ my $build = Module::Build->new(
 
 $build->create_build_script();
 
-# $Id: Build.PL,v 1.1 2005/01/14 21:10:52 julian Exp $
+# $Id: Build.PL 13 2007-05-30 22:12:35Z julian $

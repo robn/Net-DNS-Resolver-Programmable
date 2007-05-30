@@ -1,3 +1,11 @@
+libnet-dns-resolver-programmable-perl (0.003) unstable; urgency=low
+
+  * Depends: libnet-dns-perl
+  * Dropped build dependency on libtest-simple-perl for now.  There are
+    currently no tests.
+
+ -- Julian Mehnle <julian@mehnle.net>  Wed, 30 May 2007 22:03:19 +0000
+
 libnet-dns-resolver-programmable-perl (0.002.2) unstable; urgency=low
 
   * Slightly adjusted license statement in debian/copyright.

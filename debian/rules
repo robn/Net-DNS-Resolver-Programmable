@@ -30,7 +30,7 @@ install-stamp: build-stamp
 	dh_clean -k
 	
 	$(BUILD) test
-	$(BUILD) install destdir=$(TMP)
+	$(BUILD) install destdir=$(TMP) create_packlist=0
 	
 	touch install-stamp
 
