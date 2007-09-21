@@ -4,6 +4,12 @@
 #   ! = Changed something significant, or removed a feature
 #   * = Fixed a bug, or made a minor improvement
 
+--- 0.003.1 (2007-09-21 01:00)
+
+  Debian:
+  * Renamed Debian source package to net-dns-resolver-programmable-perl in
+    preparation of official Debian release.
+
 --- 0.003 (2007-05-30 22:00)
 
   Miscellaneous:
@@ -35,5 +41,5 @@
 
 --- 0.001 (initial release) (2006-10-23 00:00)
 
-# $Id: CHANGES 13 2007-05-30 22:12:35Z julian $
+# $Id: CHANGES 20 2007-09-21 01:44:01Z julian $
 # vim:sts=2 sw=2 et tw=79

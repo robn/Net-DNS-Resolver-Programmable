@@ -1,3 +1,10 @@
+net-dns-resolver-programmable-perl (0.003.1) unstable; urgency=low
+
+  * Renamed source package from libnet-dns-resolver-programmable-perl for
+    official Debian release.
+
+ -- Julian Mehnle <julian@mehnle.net>  Fri, 21 Sep 2007 01:06:30 +0000
+
 libnet-dns-resolver-programmable-perl (0.003) unstable; urgency=low
 
   * Depends: libnet-dns-perl

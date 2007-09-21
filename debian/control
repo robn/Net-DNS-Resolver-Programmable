@@ -1,4 +1,4 @@
-Source: libnet-dns-resolver-programmable-perl
+Source: net-dns-resolver-programmable-perl
 Section: perl
 Priority: optional
 Maintainer: Julian Mehnle <julian@mehnle.net>

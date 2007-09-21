@@ -3,7 +3,7 @@
 # A Net::DNS::Resolver descendant class for offline emulation of DNS
 #
 # (C) 2006-2007 Julian Mehnle <julian@mehnle.net>
-# $Id: Programmable.pm 13 2007-05-30 22:12:35Z julian $
+# $Id: Programmable.pm 20 2007-09-21 01:44:01Z julian $
 #
 ##############################################################################
 
@@ -16,11 +16,11 @@ emulation of DNS
 
 =head1 VERSION
 
-0.003
+0.003.1
 
 =cut
 
-use version; our $VERSION = qv('0.003');
+use version; our $VERSION = qv('0.003.1');
 
 use warnings;
 use strict;
