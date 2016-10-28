@@ -16,7 +16,9 @@ my %WriteMakefileArgs = (
   "LICENSE" => "gpl",
   "NAME" => "Net::DNS::Resolver::Programmable",
   "PREREQ_PM" => {
+    "Net::DNS" => "0.74_1",
     "Net::DNS::Packet" => 0,
+    "Net::DNS::Parameters" => 0,
     "Net::DNS::Resolver" => 0,
     "base" => 0,
     "constant" => 0,
@@ -32,7 +34,9 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "Net::DNS" => "0.74_1",
   "Net::DNS::Packet" => 0,
+  "Net::DNS::Parameters" => 0,
   "Net::DNS::Resolver" => 0,
   "base" => 0,
   "constant" => 0,

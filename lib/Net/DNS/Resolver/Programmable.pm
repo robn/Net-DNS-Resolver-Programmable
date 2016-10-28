@@ -27,7 +27,9 @@ use strict;
 
 use base 'Net::DNS::Resolver';
 
+use Net::DNS 0.74_1;
 use Net::DNS::Packet;
+use Net::DNS::Parameters;
 
 use constant TRUE   => (0 == 0);
 use constant FALSE  => not TRUE;
@@ -205,7 +207,7 @@ sub send {
         ($result, $aa, @answer_rrs) = $resolver_code->($domain, $rr_type, $class);
     }
     
-    if (not defined($result) or defined($Net::DNS::rcodesbyname{$result})) {
+    if (not defined($result) or defined(Net::DNS::Parameters::rcodebyname($result))) {
         # Valid RCODE, return a packet:
         
         $aa     = TRUE      if not defined($aa);
